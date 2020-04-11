@@ -19,16 +19,16 @@
                         <table class="min-w-full divide-y divide-gray-200"> 
                             <thead class="bg-gray-50"> 
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prénom</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Poste</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Département</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CIN</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jours A. Courante</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jours A. Precedante</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Recrutement</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Prénom</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Poste</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Département</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">CIN</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Courante</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Precedante</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Date Recrutement</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Nom</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Options</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
