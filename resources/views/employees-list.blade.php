@@ -9,7 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <x-nav-link :href="route('employees.index')">Liste des Employés</x-nav-link>
+                    @foreach($employees as $employee)
+                        <div>
+                            <h3>{{$employee->firstname}}</h3>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
