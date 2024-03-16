@@ -7,7 +7,6 @@
         <div class="py-2">
             <div class="max-w-max mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
                         <table class="min-w-full divide-y divide-gray-200"> 
                             <thead class="bg-gray-50"> 
                                 <tr>
@@ -34,7 +33,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $employee->idnumber }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $employee->current_year_days }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $employee->previous_year_days }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ date_format(date_create($employee->joindate),"d/m/Y")}}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">{{ Carbon\Carbon::parse($employee->joindate)->format('d/m/Y')}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
