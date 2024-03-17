@@ -10,9 +10,26 @@
         get filteredEmployee(){
             return this.employees.filter(i => i.firstname.toLowerCase().startsWith(this.search.toLowerCase())
             )
+        }, 
+    
+        deleteEmployee(id) {
+            if (confirm('Are you sure you want to delete this employee?')) {
+                fetch(`/employees/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name=&quot;csrf-token&quot;]').getAttribute('content')
+                    }
+                })
+                .then(() => {
+                    const index = this.employees.findIndex(e => e.id === id);
+                    this.employees.splice(index, 1); 
+                })
+                .catch(error => {
+                    console.error('Error deleting employee:', error); 
+                });
+            }
         }
-    }
-">
+    }">
         <div class="py-2">
             <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -45,9 +62,9 @@
                                             <td x-text="employee.previous_year_days" class="px-6 py-4 whitespace-nowrap"></td>
                                             <td x-text="employee.joindate" class="px-6 py-4 whitespace-nowrap"></td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <button @click="deleteEmployee(employee.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                                <x-primary-button @click="deleteEmployee(employee.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                                     Delete
-                                                </button>
+                                                </x-primary-button>
                                             </td>
                                     </tr>
                                 </template>
@@ -58,5 +75,3 @@
             </div>
 
 </x-app-layout>
-
-4700831211004800

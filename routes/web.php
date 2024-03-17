@@ -20,4 +20,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
+
 require __DIR__.'/auth.php';
