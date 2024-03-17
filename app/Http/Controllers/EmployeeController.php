@@ -11,14 +11,13 @@ class EmployeeController extends Controller
     //List Employees
     public function show(): View
     {
-        return view('employees-list', [
+        return view('employees-list',[
             'employees' => Employee::All()
         ]);
-        
     }
 
     public function destroy($id){
-    $employee = Employee::findOrFail($id); 
+        $employee = Employee::findOrFail($id); 
     $employee->delete(); 
     }
 

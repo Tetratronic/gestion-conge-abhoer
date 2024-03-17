@@ -10,6 +10,10 @@ class Employee extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'joindate' => 'datetime:d/m/Y',
+    ];
+
     public function user(): HasOne
     {
         return $this->hasOne(User::class);
