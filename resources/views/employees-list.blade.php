@@ -4,9 +4,19 @@
             {{ __('Liste des Employés') }}
         </h2>
     </x-slot>
+    <div x-data="{
+        search: '',
+        employees: {{$employees}},
+        get filteredEmployee(){
+            return this.employees.filter(i => i.firstname.toLowerCase().startsWith(this.search.toLowerCase())
+            )
+        }
+    }
+">
         <div class="py-2">
-            <div class="max-w-max mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <input x-model="search" class="mb-2 p-1 border border-gray-400 rounded-md" placeholder="Search...">
                         <table class="min-w-full divide-y divide-gray-200"> 
                             <thead class="bg-gray-50"> 
                                 <tr>
@@ -23,19 +33,24 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200"> 
-                                @foreach ($employees as $employee)
+                                <template x-for="employee in filteredEmployee" :key="employee.id">
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->firstname}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->lastname}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->position}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->department }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->email }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->idnumber }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->current_year_days }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $employee->previous_year_days }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ Carbon\Carbon::parse($employee->joindate)->format('d/m/Y')}}</td>
+                                            <td x-text="employee.firstname" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.lastname" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.position" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.department" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.email" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.idnumber" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.current_year_days" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.previous_year_days" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td x-text="employee.joindate" class="px-6 py-4 whitespace-nowrap"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <button @click="deleteEmployee(employee.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                                    Delete
+                                                </button>
+                                            </td>
                                     </tr>
-                                @endforeach
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -43,3 +58,5 @@
             </div>
 
 </x-app-layout>
+
+4700831211004800
