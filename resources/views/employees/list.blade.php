@@ -71,10 +71,10 @@
                                             <td x-text="employee.joindate" class="px-6 py-4 whitespace-nowrap"></td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <x-primary-button @click="deleteEmployee(employee.id)">
-                                                    Update
+                                                    Modifier
                                                 </x-primary-button>
                                                 <x-primary-button @click="deleteEmployee(employee.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ">
-                                                    Delete
+                                                    Supprimer
                                                 </x-primary-button>
                                             </td>
                                     </tr>
@@ -96,7 +96,7 @@
                     <div class="relative bg-white p-10 rounded-md">
                         <button @click="openModal = false" class="absolute top-3 right-3 text-gray-700 hover:text-red-600">Fermer</button>
             
-                        <form method="POST" action="" class="grid grid-cols-2 gap-4"> 
+                        <form method="POST" action="{{route('employees.store')}}" class="grid grid-cols-2 gap-4"> 
                             @csrf
             
                             <div class="flex flex-col"> <label class="mb-1" for="firstname">Nom:</label>

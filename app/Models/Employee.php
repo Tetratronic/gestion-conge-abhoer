@@ -14,6 +14,8 @@ class Employee extends Model
         'joindate' => 'datetime:d/m/Y',
     ];
 
+    protected $guarded = [];
+
     public function user(): HasOne
     {
         return $this->hasOne(User::class);

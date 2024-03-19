@@ -11,9 +11,18 @@ class EmployeeController extends Controller
     //List Employees
     public function show(): View
     {
-        return view('employees-list',[
+        return view('employees.list',[
             'employees' => Employee::All()
         ]);
+    }
+
+    public function store(Request $request){
+
+        $data = $request->all();
+        $employee = Employee::create($data);
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully.'); 
+
+
     }
 
     public function destroy($id){
