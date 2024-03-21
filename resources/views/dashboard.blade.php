@@ -10,6 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <x-nav-link :href="route('employees.index')">Liste des Employés</x-nav-link>
+                    <x-nav-link :href="route('users.index')">Liste des Utilisateurs</x-nav-link>
                 </div>
             </div>
         </div>
