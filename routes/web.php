@@ -18,9 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
-    Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
-    Route::get('/employees', [EmployeeController::class, 'show'])->name('employees.index');
+
+    Route::resource('employees', EmployeeController::class);
 });
 
 

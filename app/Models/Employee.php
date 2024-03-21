@@ -11,7 +11,7 @@ class Employee extends Model
     use HasFactory;
 
     protected $casts = [
-        'joindate' => 'datetime:d/m/Y',
+        'joindate' => 'date:d/m/Y',
     ];
 
     protected $guarded = [];
