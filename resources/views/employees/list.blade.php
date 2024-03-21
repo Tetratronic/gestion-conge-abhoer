@@ -7,7 +7,7 @@
                 <div class="flex flex-row justify-between">
                     {{-- <x-secondary-button class=" bg-black text-white max-h-10 max-w-40">Ajouter un employé</x-secondary-button> --}}
                     <a href="{{ route("employees.create") }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mb-auto rounded cursor-pointer">
-                        Nouveau Employé
+                        Nouvel Employé
                     </a>
                     <form action="{{ route('employees.index')}}" method="GET" class="flex flex-row">
                         <input name='search' class="mb-5 p-1 border border-gray-400 rounded-md float" placeholder="Rechercher...">

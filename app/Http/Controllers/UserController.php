@@ -17,7 +17,7 @@ class UserController extends Controller
 
         $searchQuery = $request->input('search');
         return view('users.list',[
-            'users' => User::where('login', 'like', "%$searchQuery%")->get()
+            'users' => User::with('employee')->where('login', 'like', "%$searchQuery%")->get()
         ]);
     }
 
