@@ -1,5 +1,5 @@
 <x-app-layout>
-    
+
     {{-- Displaying the list of Employees  --}}
 
         <div class="py-10">
@@ -16,19 +16,19 @@
                     
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-max">
-                        <table class="min-w-full divide-y divide-gray-200"> 
+                        <table class="min-w-full divide-y divide-gray-200 text-center"> 
                             <thead class="bg-gray-50"> 
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Prénom</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Poste</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Département</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Email</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">CIN</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Courante</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Precedante</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Date Recrutement</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Nom</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Options</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Prénom</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Nom</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Poste</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Département</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">CIN</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Courante</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Precedante</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Date Recrutement</th>
+                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Options</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -39,29 +39,44 @@
                                 @else
                                 @foreach($employees as $employee)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{$employee->firstname}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->lastname}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->position}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->department}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->email}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->idnumber}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->current_year_days}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->previous_year_days}}</td>
-                                    <td  class="px-6 py-4 whitespace-nowrap">{{$employee->joindate->format('d/m/Y')}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap flex flex-row gap-3">
+                                    <td class="px-4 py-2 whitespace-nowrap">{{$employee->firstname}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->lastname}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->position}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->department}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->email}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->idnumber}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->current_year_days}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->previous_year_days}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->joindate->format('d/m/Y')}}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap flex flex-row gap-3 align-center justify-center">
                                         <form action="{{ route('employees.edit', ['employee' => $employee->id] )}}" method="GET">
                                             @csrf
-                                            <x-primary-button type="submit">
-                                                Modifier
-                                            </x-primary-button>
+                                            <div class="relative">
+                                                <button type="submit" data-tooltip-target="tooltip-info" data-tooltip-trigger="hover">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
+                                                        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
                                         </form>
                                         <form method="POST" action="{{ route('employees.destroy', $employee->id )}}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button onclick="return confirm('Confirmer ?')" type='submit' class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ">
-                                                Supprimer
-                                            </x-primary-button>
+                                            <button onclick="return confirm('Confirmer ?')" type='submit' class="bg-transparent text-white font-bold">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="red">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
                                         </form>
+                                        {{-- Add User Icon --}}
+                                        @if(Auth::User()->isAdmin())
+                                            <form method="POST" action="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
+                                                </svg>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
