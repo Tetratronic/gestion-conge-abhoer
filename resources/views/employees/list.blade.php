@@ -58,7 +58,7 @@
                                         <form method="POST" action="{{ route('employees.destroy', $employee->id )}}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button type='submit' class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ">
+                                            <x-primary-button onclick="return confirm('Confirmer ?')" type='submit' class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ">
                                                 Supprimer
                                             </x-primary-button>
                                         </form>
