@@ -28,8 +28,10 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @if ($users->isEmpty())
                                 <tr>
-                                    <td colspan="10" class="bg-white-100 text-gray-600 text-center py-4 px-6 font-medium rounded">Aucun utilisateur trouvé.</td>
-                                    <x-nav-link :href="route('users.index')">Actualiser</x-nav-link>
+                                    <td colspan="10" class="bg-white-100 text-gray-600 text-center py-4 px-6 font-medium rounded"><i>{{__('Aucun utilisateur trouvé.')}}</i>
+                                        <br>
+                                        <x-nav-link class="text-lg" :href="route('users.index')">Retour</x-nav-link>
+                                    </td>
                                 </tr>
                                 @else
                                 @foreach($users as $user)

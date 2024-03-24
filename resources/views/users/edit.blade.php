@@ -1,6 +1,7 @@
 <x-app-layout>>
     <div class="flex flex-wrap items-center justify-center ">
-        <div class="relative bg-white p-10 rounded-md">    
+        <div class="relative bg-white p-10 rounded-md">
+            <h2 class=" mb-5 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">{{ __('Modifier utilisateur')}}</h2>
             <form method="POST" action="{{ route('users.update', ['user' => $user->id]) }}"> 
                 @csrf
                 @method('PUT')

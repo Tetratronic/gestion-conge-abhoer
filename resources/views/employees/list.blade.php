@@ -34,7 +34,10 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @if ($employees->isEmpty())
                                 <tr>
-                                    <td colspan="10" class="bg-white-100 text-gray-600 text-center py-4 px-6 font-medium rounded">Aucun employé trouvé.</td> 
+                                    <td colspan="10" class="bg-white-100 text-gray-600 text-center py-4 px-6 font-medium rounded"><i>{{__('Aucun employé trouvé.')}}</i>
+                                        <br>
+                                        <x-nav-link class="text-lg" :href="route('users.index')">Retour</x-nav-link>
+                                    </td>
                                 </tr>
                                 @else
                                 @foreach($employees as $employee)

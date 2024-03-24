@@ -1,6 +1,7 @@
 <x-app-layout>>
     <div class="flex flex-wrap items-center justify-center ">
-        <div class="bg-white p-10 rounded-md">    
+        <div class="bg-white p-10 rounded-md">
+            <h2 class="text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">{{ __('Nouvel utilisateur')}}</h2>
             <form method="POST" action="{{route('users.store')}}" class="flex flex-col justify-between"> 
                 @csrf
                 @method('POST')
