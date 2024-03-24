@@ -1,7 +1,7 @@
 <x-app-layout>
     {{-- Displaying the list of Employees  --}}
         <div class="py-10">
-            <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex flex-row justify-between">
                     {{-- <x-secondary-button class=" bg-black text-white max-h-10 max-w-40">Ajouter un employé</x-secondary-button> --}}
                     <a href="{{ route("users.create") }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mb-auto rounded cursor-pointer">
@@ -14,15 +14,15 @@
                     
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-max">
-                        <table class="min-w-full divide-y divide-gray-200"> 
+                        <table class="min-w-full divide-y divide-gray-200 text-center"> 
                             <thead class="bg-gray-50"> 
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Login</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Création</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employé</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Login</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Email</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Role</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Date Création</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Employé</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Options</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -36,16 +36,16 @@
                                 @else
                                 @foreach($users as $user)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{$user->login}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{$user->email}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{$user->role}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{$user->created_at}}</td>
+                                    <td class="px-2 py-2 whitespace-nowrap">{{$user->login}}</td>
+                                    <td class="px-2 py-2 whitespace-nowrap">{{$user->email}}</td>
+                                    <td class="px-2 py-2 whitespace-nowrap">{{$user->role}}</td>
+                                    <td class="px-2 py-2 whitespace-nowrap">{{$user->created_at}}</td>
                                     @if ($user->employee)
-                                        <td class="px-6 py-4 whitespace-nowrap text-green-500">Oui</td>
+                                        <td class="px-2 py-2 whitespace-nowrap text-green-500">Oui</td>
                                     @else
-                                        <td class="px-6 py-4 whitespace-nowrap text-red-500">Non</td>
+                                        <td class="px-2 py-2 whitespace-nowrap text-red-500">Non</td>
                                     @endif
-                                    <td class="px-6 py-4 whitespace-nowrap flex flex-row gap-3">
+                                    <td class="px-2 py-2 whitespace-nowrap flex flex-row gap-3 justify-center">
                                         <form action="{{ route('users.edit', ['user' => $user->id] )}}" method="GET">
                                             @csrf
                                             <x-primary-button type="submit">
