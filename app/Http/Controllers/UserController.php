@@ -84,11 +84,12 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'login' => 'required',
-            'email' => 'required|email',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,'.$user->id],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user->update($validatedData);
-        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
+        return redirect()->route('users.index')->with('success', 'Employee modified successfully');
     }
 
     public function destroy(string $id)
