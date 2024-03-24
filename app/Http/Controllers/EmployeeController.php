@@ -34,8 +34,18 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $employee = Employee::create($data);
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'position' => 'required',
+            'department' => 'required',
+            'idnumber' => 'required|max:10',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
+            'current_year_days' => 'required|numeric|lte:22|gte:0',
+            'previous_year_days' => 'required|numeric|lte:22|gte:0',
+            'joindate' => 'required'
+        ]);
+        $employee = Employee::create($validatedData);
         return redirect()->route('employees.index'); 
     }
 
@@ -71,7 +81,7 @@ class EmployeeController extends Controller
             'position' => 'required',
             'department' => 'required',
             'idnumber' => 'required|max:10',
-            'email' => 'required|email',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
             'current_year_days' => 'required|numeric|lte:22|gte:0',
             'previous_year_days' => 'required|numeric|lte:22|gte:0',
         ]);

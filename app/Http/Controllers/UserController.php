@@ -69,4 +69,32 @@ class UserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
+    public function edit(string $id)
+    {
+        return view('users.edit', [
+            'user' => User::findOrFail($id)
+        ]);
+    }
+
+    public function update(Request $request, string $id)
+    {
+        //
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'login' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user->update($validatedData);
+        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
+    }
+
+    public function destroy(string $id)
+    {
+        $user = User::findOrFail($id); 
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'Employee deleted successfully');
+    }
 }

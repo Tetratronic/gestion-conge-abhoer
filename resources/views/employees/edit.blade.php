@@ -50,7 +50,7 @@
                     <input type="date" name="joindate" id="joindate" required value="{{old('joindate', $employee->joindate->format('Y-m-d'))}}"  > 
                 </div>
                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold rounded m-4">
-                        Ajouter
+                        Modifier
                     </button>
             </form> 
         </div>

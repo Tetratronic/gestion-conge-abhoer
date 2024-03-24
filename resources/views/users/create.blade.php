@@ -4,41 +4,29 @@
             <form method="POST" action="{{route('users.store')}}" class="flex flex-col justify-between"> 
                 @csrf
                 @method('POST')
-                <div class="flex flex-col"> <label class="mb-1" for="login">Login:</label>
-                    <input type="text" name="login" id="login" required > 
-                    @error('login')
-                        <span class="text-xs text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
+
+                <x-input-label for="login" :value="__('Login')" />
+                <x-text-input id="login" name="login" type="text" class="mt-1 block w-full" :value="old('login')" required autocomplete="login" />
+                <x-input-error class="mt-2" :messages="$errors->get('login')" />
  
-                <div class="mb-0 flex flex-col"> <label class="mb-1" for="email">Email:</label>
-                    <input type="text" name="email" id="email" required > 
-                </div>
-                @error('email')
-                <span class="text-xs text-red-600">{{ $message }}</span>
-            @enderror
+                <x-input-label for="email" :value="__('Email')" />
+                <x-text-input id="email" name="email" type="text" class="mt-1 block w-full" :value="old('email')" required autocomplete="email" />
+                <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-                <div class="mb-0 flex flex-col"> 
-                    <label for="role">Role:</label>
-                    <select name="role" id="role" required >
-                        <option value="rh">RH</option> 
-                        <option value="admin">Administrateur</option>
-                        </select> 
-                </div>
+                <x-input-label class="mt-2" for="role" :value="__('Role')" />
+                <select name="role" id="role" required class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    <option value="">{{old('role')}}</option> 
+                    <option value="rh">RH</option>
+                    <option value="admin">Administrateur</option>
+                </select> 
 
-                <div class="mb-0 flex flex-col"> <label class="mb-1" for="password">Mot de Passe:</label>
-                    <input type="password" name="password" id="password" required > 
-                    @error('password')
-                    <span class="text-xs text-red-600">{{ $message }}</span>
-                @enderror
-                </div>
+                <x-input-label class="mt-4" for="password" :value="__('Mot de passe')" />
+                <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" required />
+                <x-input-error class="mt-2" :messages="$errors->get('password')" />
 
-                <div class="mb-0 flex flex-col"> <label class="mb-1" for="password_confirmation">Confirmer le Mot de Passe:</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" required > 
-                    @error('password_confirmation')
-                    <span class="text-xs text-red-600">{{ $message }}</span>
-                @enderror
-                </div>
+                <x-input-label class="mt-4" for="password_confirmation" :value="__('Confirmer le mot de passe')" />
+                <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" required />
+                <x-input-error class="mt-2" :messages="$errors->get('password_confirmation')" />
 
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold rounded m-4 p-4">
                     Ajouter

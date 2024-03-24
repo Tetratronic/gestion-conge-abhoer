@@ -19,16 +19,16 @@
                         <table class="min-w-full divide-y divide-gray-200 text-center"> 
                             <thead class="bg-gray-50"> 
                                 <tr>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Prénom</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Nom</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Poste</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Département</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Email</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">CIN</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Courante</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Jours A. Precedante</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Date Recrutement</th>
-                                    <th scope="col" class="text-center px-4 py-2 text-left text-xs font-small text-gray-500 uppercase tracking-wider">Options</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Prénom</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Nom</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Poste</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Département</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Email</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">CIN</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Jours A. Courante</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Jours A. Precedante</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Date Recrutement</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Options</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -70,13 +70,13 @@
                                             </button>
                                         </form>
                                         {{-- Add User Icon --}}
-                                        @if(Auth::User()->isAdmin())
-                                            <form method="POST" action="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
-                                                </svg>
-                                            </form>
-                                        @endif
+                                        {{-- @if(Auth::User()->isAdmin())
+                                                <a href="{{ route('users.create', $employee->id )}}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
+                                                    </svg>
+                                                </a>
+                                        @endif --}}
                                     </td>
                                 </tr>
                                 @endforeach
