@@ -81,7 +81,7 @@ class EmployeeController extends Controller
             'position' => 'required',
             'department' => 'required',
             'idnumber' => 'required|max:10',
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:employees,email,'.$employee->id],
             'current_year_days' => 'required|numeric|lte:22|gte:0',
             'previous_year_days' => 'required|numeric|lte:22|gte:0',
         ]);
