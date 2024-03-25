@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-5xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">
-            {{ __('Bienvenue')}}, {{Auth::user()->login}} 
+        <h2 class="text-5xl font-extrabold leading-none tracking-tight text-grey-900">
+            {{ __('Bienvenue')}}, {{Auth::user()->login}}
         </h2>
     </x-slot>
 
