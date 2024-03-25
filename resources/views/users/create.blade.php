@@ -16,7 +16,7 @@
 
                 <x-input-label class="mt-2" for="role" :value="__('Role')" />
                 <select name="role" id="role" required class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                    <option value="">{{old('role')}}</option> 
+                    <option value="">{{old('role', 'Choisir')}}</option> 
                     <option value="rh">RH</option>
                     <option value="admin">Administrateur</option>
                 </select> 
