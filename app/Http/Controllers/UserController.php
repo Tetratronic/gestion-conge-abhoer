@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Employee;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
@@ -34,7 +33,7 @@ class UserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -70,14 +69,14 @@ class UserController extends Controller
         return redirect(route('dashboard', absolute: false));
     }
 
-    public function edit(string $id)
+    public function edit(string $id): View
     {
         return view('users.edit', [
             'user' => User::findOrFail($id)
         ]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
         //
         $user = User::findOrFail($id);
@@ -92,9 +91,9 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Employee modified successfully');
     }
 
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
-        $user = User::findOrFail($id); 
+        $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('users.index')->with('success', 'Employee deleted successfully');
     }

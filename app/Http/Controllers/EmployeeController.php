@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
 
 
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('employees.create');
     }
@@ -32,7 +33,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'firstname' => 'required',
@@ -45,8 +46,8 @@ class EmployeeController extends Controller
             'previous_year_days' => 'required|numeric|lte:22|gte:0',
             'joindate' => 'required'
         ]);
-        $employee = Employee::create($validatedData);
-        return redirect()->route('employees.index'); 
+        Employee::create($validatedData);
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -60,7 +61,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
         return view('employees.edit', [
             'employee' => Employee::findOrFail($id)
@@ -70,7 +71,7 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
         //
         $employee = Employee::findOrFail($id);
@@ -93,9 +94,9 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
-        $employee = Employee::findOrFail($id); 
+        $employee = Employee::findOrFail($id);
         $employee->delete();
         return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
     }
