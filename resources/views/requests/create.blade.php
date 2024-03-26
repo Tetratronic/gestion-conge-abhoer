@@ -5,7 +5,6 @@
             <form method="POST" action="{{route('leave-requests.store')}}" class="flex flex-col justify-between">
                 @csrf
                 @method('POST')
-
                 <x-input-label for="idnumber" :value="__('Numero CIN')" />
                 <x-text-input id="idnumber" name="idnumber" type="text" class="mt-1 block w-full" :value="old('idnumber')" required autocomplete="idnumber" />
                 <x-input-error class="mt-2" :messages="$errors->get('idnumber')" />
@@ -15,11 +14,11 @@
                 <x-input-error class="mt-2" :messages="$errors->get('start_date')" />
 
                 <x-input-label for="end_date" :value="__('Date Fin')" />
-                <x-text-input id="end_date" name="end_date" type="date" class="mt-1 block w-full" :value="old('end_date')" required autocomplete="end_date" />
+                <x-text-input id="end_date" name="end_date" type="date" class="mt-1 block w-full" :value="old('end_date')" autocomplete="end_date" />
                 <x-input-error class="mt-2" :messages="$errors->get('end_date')" />
 
                 <x-input-label for="duration" :value="__('Durée')" />
-                <x-text-input id="duration" name="duration" type="number" class="mt-1 block w-full" :value="old('duration')" required autocomplete="duration" />
+                <x-text-input id="duration" name="duration" type="number" class="mt-1 block w-full" :value="old('duration')" autocomplete="duration" />
                 <x-input-error class="mt-2" :messages="$errors->get('duration')" />
 
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold rounded m-4 p-4">

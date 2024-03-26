@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,8 +17,8 @@ class Employee extends Model
 
     protected $guarded = [];
 
-    public function user(): HasOne
+    public function leaveRequests(): HasMany
     {
-        return $this->hasOne(User::class);
+        return $this->hasMany(LeaveRequest::class);
     }
 }

@@ -11,8 +11,6 @@ Route::get('/', function () {
     return to_route('login');
 });
 
-Route::get('/employees', [EmployeeController::class, 'show'])->name('employees.index');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -22,11 +20,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('employees', EmployeeController::class);
-    Route::resource('leave-requests', LeaveRequestController::class);
 });
 
 Route::middleware([AdminRoutes::class])->group(function (){
     Route::resource('users', UserController::class);
+    Route::resource('leave-requests', LeaveRequestController::class);
 });
 
 

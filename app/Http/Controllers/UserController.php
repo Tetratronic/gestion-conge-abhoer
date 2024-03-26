@@ -44,21 +44,9 @@ class UserController extends Controller
             'role' => ['required', 'string', 'lowercase']
         ]);
 
-        // $isEmployee = Employee::where('email', $request->email)->first();
-
-    function checkEmployee(Request $request) {
-            $employee = Employee::where('email', $request->email)->first();
-            if($employee){
-                return $employee->id;
-            } else{
-                return null;
-            }
-        };
-
         $user = User::create([
             'login' => $request->login,
             'email' => $request->email,
-            'employee_id' => checkEmployee($request),
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);

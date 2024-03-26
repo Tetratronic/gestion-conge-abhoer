@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\vacationRequest;
+use App\Models\Employee;
+use App\Models\leaveRequest;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class LeaveRequestController extends Controller
 {
@@ -17,7 +23,7 @@ class LeaveRequestController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         //
         return view('requests.create');
@@ -26,9 +32,23 @@ class LeaveRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(vacationRequest $request): RedirectResponse
     {
-        //
+
+        $employee = Employee::where('idnumber', $request->idnumber)->firstOrFail();
+
+        $employeeRequest = LeaveRequest::create([
+
+            'employee_id' => $employee->id,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'duration' => $request->duration,
+        ]);
+
+        event(new Registered($employeeRequest));
+        // return \App::make('redirect')->back()->with('flash_success', 'Thank you,!');
+
+        return redirect(route('dashboard', absolute: false));
     }
 
     /**
