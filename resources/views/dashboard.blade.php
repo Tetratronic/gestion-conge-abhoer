@@ -11,7 +11,7 @@
                     @if (Auth::User()->isAdmin() == 'admin')
                         <a class="max-w-xs text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-large rounded-lg text-lg px-5 py-2.5 focus:outline-none" href="{{route('users.index')}}">Liste des Utilisateurs</a>
                     @endif
-                    <a class="max-w-xs text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-large rounded-lg text-lg px-5 py-2.5 focus:outline-none" href="{{route('users.index')}}">Nouvelle demande de congé</a>
+                    <a class="max-w-xs text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-large rounded-lg text-lg px-5 py-2.5 focus:outline-none" href="{{route('leave-requests.create')}}">Nouvelle demande de congé</a>
                 </div>
         </div>
 </x-app-layout>

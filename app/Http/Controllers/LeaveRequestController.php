@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LeaveRequest extends Controller
+class LeaveRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,6 +20,7 @@ class LeaveRequest extends Controller
     public function create()
     {
         //
+        return view('requests.create');
     }
 
     /**
