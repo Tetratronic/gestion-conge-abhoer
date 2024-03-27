@@ -35,7 +35,11 @@ class LeaveRequestController extends Controller
     public function store(vacationRequest $request): RedirectResponse
     {
 
-        $employee = Employee::where('idnumber', $request->idnumber)->firstOrFail();
+        $employee = Employee::where('idnumber', $request->idnumber)->first();
+
+        if(!$employee){
+            return back()->withErrors(['idnumber' => 'Cet utilisateur n\'existe pas']);
+        }
 
         $employeeRequest = LeaveRequest::create([
             'employee_id' => $employee->id,
