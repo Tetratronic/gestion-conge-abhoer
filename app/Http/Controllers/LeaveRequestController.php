@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\vacationRequest;
 use App\Models\Employee;
-use App\Models\leaveRequest;
+use App\Models\LeaveRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -38,7 +38,6 @@ class LeaveRequestController extends Controller
         $employee = Employee::where('idnumber', $request->idnumber)->firstOrFail();
 
         $employeeRequest = LeaveRequest::create([
-
             'employee_id' => $employee->id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,

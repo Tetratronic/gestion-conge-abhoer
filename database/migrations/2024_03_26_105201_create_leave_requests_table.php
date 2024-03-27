@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('employee_id')->constrained();
             $table->date('start_date');
-            $table->date('end_date');
-            $table->integer('duration');
+            $table->date('end_date')->nullable();
+            $table->integer('duration')->nullable();
             $table->timestamps();
         });
     }
