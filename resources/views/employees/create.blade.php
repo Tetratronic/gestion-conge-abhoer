@@ -23,7 +23,7 @@
 
 
 
-                    <div class="flex flex-col"><x-input-label class="mt-4" for="department" :value="__('Departement')" />
+                    <div class="flex flex-col"><x-input-label class="mt-4" for="department" :value="__('Division/Service')" />
                     <select name="department" id="department" required class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <option value="">Choisir</option>
                         <option value="Informatique">Informatique</option>

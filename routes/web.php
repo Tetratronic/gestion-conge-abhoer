@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeaveRequestController;
 
@@ -20,13 +21,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/settings', [SettingsController::class, 'edit'])->name('settings');
+
+
     Route::resource('employees', EmployeeController::class);
     Route::resource('leave-requests', LeaveRequestController::class);
+    Route::resource('departments', DepartmentController::class);
+
 });
 
 Route::middleware([AdminRoutes::class])->group(function (){
     Route::resource('users', UserController::class);
-    Route::resource('departments', DepartmentController::class);
 });
 
 
