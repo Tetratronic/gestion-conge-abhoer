@@ -30,10 +30,10 @@ class DepartmentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Department::class],
+            'name' => ['required', 'string', 'lowercase','max:255', 'unique:'.Department::class],
         ]);
         Department::create($validatedData);
-        return redirect()->route('settings.edit');
+        return redirect()->route('settings');
     }
 
     /**
@@ -65,6 +65,8 @@ class DepartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $employee = Department::findOrFail($id);
+        $employee->delete();
+        return redirect()->route('settings')->with('success', 'Employee deleted successfully');
     }
 }

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class EmployeeController extends Controller
 {
@@ -14,11 +15,9 @@ class EmployeeController extends Controller
      */
     public function index(Request $request): View
     {
-
-
         $searchQuery = $request->input('search');
         return view('employees.list',[
-            'employees' => Employee::where('firstname', 'like', "%$searchQuery%")->get()
+            'employees' => Employee::where('firstname', 'like', "%$searchQuery%")->get(),
         ]);
     }
 
@@ -27,7 +26,9 @@ class EmployeeController extends Controller
      */
     public function create(): View
     {
-        return view('employees.create');
+        return view('employees.create', [
+            'departments' => Department::all(),
+        ]);
     }
 
     /**

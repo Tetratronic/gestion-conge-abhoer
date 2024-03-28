@@ -9,9 +9,9 @@
         @csrf
         @method('POST')
         <div>
-            <x-input-label for="department" :value="__('Ajouter une nouvelle division')" />
-            <x-text-input id="department" name="department" type="text" class="mt-1 block w-full" autocomplete="department" />
-            <x-input-error :messages="$errors->updatePassword->get('department')" class="mt-2" />
+            <x-input-label for="name" :value="__('Ajouter une nouvelle division')" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
