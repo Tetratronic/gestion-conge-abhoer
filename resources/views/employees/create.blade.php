@@ -16,6 +16,13 @@
                         <x-input-error class="mt-2" :messages="$errors->get('lastname')" /></div>
 
 
+                    <div class="flex flex-col"><x-input-label class="mt-4" for="fullname_ar" :value="__('Nom complet en arabe')" />
+                        <x-text-input id="fullname_ar" name="fullname_ar" type="text" class="mt-1 block w-full" required :value="old('fullname_ar')" />
+                        <x-input-error class="mt-2" :messages="$errors->get('fullname_ar')" /></div>
+
+                    <div class="flex flex-col"><x-input-label class="mt-4" for="lastname" :value="__('Prénom')" />
+                        <x-text-input id="lastname" name="lastname" type="text" class="mt-1 block w-full" required :value="old('lastname')" />
+                        <x-input-error class="mt-2" :messages="$errors->get('lastname')" /></div>
 
                     <div class="flex flex-col"><x-input-label class="mt-4" for="position" :value="__('Poste')" />
                         <x-text-input id="position" name="position" type="text" class="mt-1 block w-full" required :value="old('position')" />

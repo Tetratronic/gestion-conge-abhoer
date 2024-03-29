@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('firstname_ar');
-            $table->string('lastname_ar');
+            $table->string('fullname_ar');
             $table->string('position');
             $table->string('department');
             $table->string('idnumber');
