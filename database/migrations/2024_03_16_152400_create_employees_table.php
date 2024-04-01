@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('current_year_days');
             $table->integer('previous_year_days');
-            $table->date('joindate');
             $table->timestamps();
         });
     }

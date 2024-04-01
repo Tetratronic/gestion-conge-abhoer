@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 
-class vacationRequest extends FormRequest
+class VacationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class vacationRequest extends FormRequest
     return [
         'idnumber.exists' => 'Cet employé n\'éxiste pas.',
         'end_date.required_if' => 'Ce champs est requis si la durée est nulle',
-        'duration.required_if' => 'Ce champs est requis si la date fin est nulle' 
+        'duration.required_if' => 'Ce champs est requis si la date fin est nulle'
     ];
 }
 
@@ -34,7 +34,7 @@ class vacationRequest extends FormRequest
      */
     public function rules(): array
     {
-        
+
         return [
             'idnumber' => [
                 'required', Rule::exists('employees', 'idnumber'),

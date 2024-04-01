@@ -32,7 +32,7 @@ class LeaveRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(vacationRequest $request): RedirectResponse
+    public function store(VacationRequest $request): RedirectResponse
     {
         $employeeRequest = LeaveRequest::create([
             'employee_id' => $employee->id,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Rules\ArabicText;
 use Illuminate\View\View;
 use App\Models\Department;
 use Illuminate\Http\Request;
@@ -39,13 +40,13 @@ class EmployeeController extends Controller
         $validatedData = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
+            'fullname_ar' => ['required', new ArabicText],
             'position' => 'required',
             'department' => 'required',
             'idnumber' => 'required|max:10',
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
             'current_year_days' => 'required|numeric|lte:22|gte:0',
             'previous_year_days' => 'required|numeric|lte:22|gte:0',
-            'joindate' => 'required'
         ]);
         Employee::create($validatedData);
         return redirect()->route('employees.index');

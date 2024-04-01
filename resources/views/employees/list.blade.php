@@ -25,7 +25,6 @@
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">CIN</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Jours A. Courante</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Jours A. Precedante</th>
-                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Date Recrutement</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Options</th>
                                 </tr>
                             </thead>
@@ -48,7 +47,6 @@
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->idnumber}}</td>
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->current_year_days}}</td>
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->previous_year_days}}</td>
-                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->joindate->format('d/m/Y')}}</td>
                                     <td class="px-4 py-2 whitespace-nowrap flex flex-row gap-3 align-center justify-center">
                                         <form action="{{ route('employees.edit', ['employee' => $employee->id] )}}" method="GET">
                                             @csrf

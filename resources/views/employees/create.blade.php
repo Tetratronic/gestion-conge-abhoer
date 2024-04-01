@@ -20,9 +20,6 @@
                         <x-text-input id="fullname_ar" name="fullname_ar" type="text" class="mt-1 block w-full" required :value="old('fullname_ar')" />
                         <x-input-error class="mt-2" :messages="$errors->get('fullname_ar')" /></div>
 
-                    <div class="flex flex-col"><x-input-label class="mt-4" for="lastname" :value="__('Prénom')" />
-                        <x-text-input id="lastname" name="lastname" type="text" class="mt-1 block w-full" required :value="old('lastname')" />
-                        <x-input-error class="mt-2" :messages="$errors->get('lastname')" /></div>
 
                     <div class="flex flex-col"><x-input-label class="mt-4" for="position" :value="__('Poste')" />
                         <x-text-input id="position" name="position" type="text" class="mt-1 block w-full" required :value="old('position')" />
@@ -32,11 +29,6 @@
 
                     <div class="flex flex-col"><x-input-label class="mt-4" for="department" :value="__('Division/Service')" />
                     <select name="department" id="department" required class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                        {{-- <option value="">Choisir</option>
-                        <option value="Informatique">Informatique</option>
-                        <option value="Administration">Administration</option>
-                        <option value="Gestion">Gestion</option>
-                        <option value="Sécurité">Securite</option> --}}
                         @foreach($departments as $department)
                             <option value="{{$department->name}}">{{$department->name}}</option>
                         @endforeach
@@ -63,11 +55,6 @@
                     <div class="flex flex-col"><x-input-label class="mt-4" for="previous_year_days" :value="__('Jours A. Precedante')" />
                         <x-text-input id="previous_year_days" name="previous_year_days" type="number" class="mt-1 block w-full" required :value="old('previous_year_days')" />
                         <x-input-error class="mt-2" :messages="$errors->get('previous_year_days')" /></div>
-
-
-                    <div class="flex flex-col"><x-input-label class="mt-4" for="joindate" :value="__('Date de recrutement')" />
-                        <x-text-input id="joindate" name="joindate" type="date" class="mt-1 block w-full" required :value="old('joindate')"/>
-                        <x-input-error class="mt-2" :messages="$errors->get('joindate')" /></div>
 
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold rounded mt-6 p-4">
                             Ajouter
