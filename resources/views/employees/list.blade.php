@@ -41,6 +41,7 @@
                                 <tr>
                                     <td class="px-4 py-2 whitespace-nowrap">{{$employee->firstname}}</td>
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->lastname}}</td>
+                                    <td  class="px-4 py-2 whitespace-nowrap">{{$employee->fullname_ar}}</td>
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->position}}</td>
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->department}}</td>
                                     <td  class="px-4 py-2 whitespace-nowrap">{{$employee->email}}</td>
