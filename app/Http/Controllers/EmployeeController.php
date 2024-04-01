@@ -17,8 +17,12 @@ class EmployeeController extends Controller
     public function index(Request $request): View
     {
         $searchQuery = $request->input('search');
-        return view('employees.list',[
-            'employees' => Employee::where('firstname', 'like', "%$searchQuery%")->get(),
+
+        $employees = Employee::where('firstname', 'like', "%$searchQuery%")
+            ->paginate(10); // Change the number 15 to your desired items per page
+
+        return view('employees.list', [
+            'employees' => $employees
         ]);
     }
 
