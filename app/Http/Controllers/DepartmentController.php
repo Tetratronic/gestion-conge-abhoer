@@ -13,7 +13,7 @@ class DepartmentController extends Controller
      */
     public function index(Request $request): View
     {
-        
+        return 0;
     }
 
     /**
@@ -30,7 +30,7 @@ class DepartmentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'string', 'lowercase','max:255', 'unique:'.Department::class],
+            'name' => ['required', 'string', 'max:255', 'unique:'.Department::class, 'regex:/(^([A-Z]))/u' ],
         ]);
         Department::create($validatedData);
         return redirect()->route('settings');

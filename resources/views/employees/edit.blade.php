@@ -15,6 +15,10 @@
                         <x-text-input id="lastname" name="lastname" type="text" class="mt-1 block w-full" required :value="old('lastname', $employee->lastname)" />
                         <x-input-error class="mt-2" :messages="$errors->get('lastname')" /></div>
 
+                <div class="flex flex-col"><x-input-label class="mt-4" for="fullname_ar" :value="__('Nom complet en arabe')" />
+                    <x-text-input id="fullname_ar" name="fullname_ar" type="text" class="mt-1 block w-full" required :value="old('fullname_ar', $employee->fullname_ar)" />
+                    <x-input-error class="mt-2" :messages="$errors->get('fullname_ar')" /></div>
+
 
 
                     <div class="flex flex-col"><x-input-label class="mt-4" for="position" :value="__('Poste')" />
@@ -53,11 +57,6 @@
                     <div class="flex flex-col"><x-input-label class="mt-4" for="previous_year_days" :value="__('Jours A. Precedante')" />
                         <x-text-input id="previous_year_days" name="previous_year_days" type="number" class="mt-1 block w-full" required :value="old('previous_year_days', $employee->previous_year_days)" />
                         <x-input-error class="mt-2" :messages="$errors->get('previous_year_days')" /></div>
-
-
-                    <div class="flex flex-col"><x-input-label class="mt-4" for="joindate" :value="__('Date de recrutement')" />
-                        <x-text-input id="joindate" name="joindate" type="date" class="mt-1 block w-full" required :value="old('joindate', $employee->joindate->format('Y-m-d'))"/>
-                        <x-input-error class="mt-2" :messages="$errors->get('joindate')" /></div>
 
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold rounded mt-6 p-4">
                             Ajouter

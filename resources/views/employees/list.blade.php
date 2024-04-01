@@ -10,7 +10,6 @@
                     <form action="{{ route('employees.index')}}" method="GET" class="flex flex-row">
                         <input name='search' class="mb-5 p-1 border border-gray-400 rounded-md float" placeholder="Rechercher...">
                         <x-primary-button type="submit" class="mb-5 p-1 ml-5">Chercher</x-primary-button>
-                        <a href="{{ URL::previous() }}">Back</button>
                     </form>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-max">
@@ -19,6 +18,7 @@
                                 <tr>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Prénom</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Nom</th>
+                                    <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Nom Complet en arabe</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Poste</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Division/Service</th>
                                     <th scope="col" class="text-center py-2 text-xs text-gray-500 uppercase">Email</th>

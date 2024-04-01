@@ -85,6 +85,7 @@ class EmployeeController extends Controller
         $validatedData = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
+            'fullname_ar' => ['required', new ArabicText()],
             'position' => 'required',
             'department' => 'required',
             'idnumber' => 'required|max:10',
@@ -94,7 +95,7 @@ class EmployeeController extends Controller
         ]);
 
         $employee->update($validatedData);
-        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
+        return redirect()->route('employees.index')->with('success', 'Employee updated successfully');
     }
 
     /**
