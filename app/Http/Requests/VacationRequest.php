@@ -39,7 +39,7 @@ class VacationRequest extends FormRequest
 
         return [
             'fullname_ar' => [
-                'required', Rule::exists('employees', 'idnumber'), new ArabicText()
+                'required', Rule::exists('employees', 'fullname_ar'), new ArabicText()
             ],
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date|required_if:duration,null',
@@ -47,3 +47,5 @@ class VacationRequest extends FormRequest
         ];
     }
 }
+
+

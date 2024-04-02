@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\vacationRequest;
+use App\Helpers\DateHelper;
 use App\Models\Employee;
 use App\Models\LeaveRequest;
 use Illuminate\Auth\Events\Registered;
@@ -52,7 +53,7 @@ class LeaveRequestController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
