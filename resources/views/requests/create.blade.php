@@ -5,9 +5,9 @@
             <form method="POST" action="{{route('leave-requests.store')}}" class="flex flex-col justify-between">
                 @csrf
                 @method('POST')
-                <x-input-label for="idnumber" :value="__('Numero CIN')" />
-                <x-text-input id="idnumber" name="idnumber" type="text" class="mt-1 block w-full" :value="old('idnumber')" required autocomplete="idnumber" />
-                <x-input-error class="mt-2" :messages="$errors->get('idnumber')" />
+                <x-input-label for="fullname_ar" :value="__('Nom complet en Arabe')" />
+                <x-text-input id="fullname_ar" name="fullname_ar" type="text" class="mt-1 block w-full" :value="old('fullname_ar')" required autocomplete="fullname_ar" />
+                <x-input-error class="mt-2" :messages="$errors->get('fullname_ar')" />
 
                 <x-input-label for="start_date" :value="__('Date Début')" />
                 <x-text-input id="start_date" name="start_date" type="date" class="mt-1 block w-full" :value="old('start_date')" required autocomplete="start_date" />

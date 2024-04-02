@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ArabicText;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -21,7 +22,7 @@ class VacationRequest extends FormRequest
     public function messages()
 {
     return [
-        'idnumber.exists' => 'Cet employé n\'éxiste pas.',
+        'fullname_ar.exists' => 'Cet employé n\'éxiste pas.',
         'end_date.required_if' => 'Ce champs est requis si la durée est nulle',
         'duration.required_if' => 'Ce champs est requis si la date fin est nulle'
     ];
@@ -36,8 +37,8 @@ class VacationRequest extends FormRequest
     {
 
         return [
-            'idnumber' => [
-                'required', Rule::exists('employees', 'idnumber'),
+            'fullname_ar' => [
+                'required', Rule::exists('employees', 'idnumber'), new ArabicText()
             ],
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date|required_if:duration,null',
