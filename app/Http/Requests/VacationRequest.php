@@ -24,7 +24,8 @@ class VacationRequest extends FormRequest
     return [
         'fullname_ar.exists' => 'Cet employé n\'éxiste pas.',
         'end_date.required_if' => 'Ce champs est requis si la durée est nulle',
-        'duration.required_if' => 'Ce champs est requis si la date fin est nulle'
+        'duration.required_if' => 'Ce champs est requis si la date fin est nulle',
+        'duration.lte' => 'La durée ne doit pas dépasser 44 jours.'
     ];
 }
 
@@ -42,7 +43,7 @@ class VacationRequest extends FormRequest
             ],
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date|required_if:duration,null',
-            'duration' => 'nullable|numeric|min:1|required_if:end_date,null',
+            'duration' => 'nullable|numeric|min:1|lte:44|required_if:end_date,null|',
         ];
     }
 }
