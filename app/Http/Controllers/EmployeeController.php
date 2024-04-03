@@ -53,7 +53,7 @@ class EmployeeController extends Controller
             'previous_year_days' => 'required|numeric|lte:22|gte:0',
         ]);
         Employee::create($validatedData);
-        return redirect()->route('employees.index');
+        return redirect()->route('employees.index')->with('success', 'L\'employé a bien été ajouté');
     }
 
     /**

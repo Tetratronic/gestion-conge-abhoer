@@ -1,5 +1,6 @@
 <x-app-layout>
     {{-- Displaying the list of Employees  --}}
+
         <div class="py-10">
             <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex flex-row justify-between">
@@ -12,7 +13,13 @@
                         <x-primary-button type="submit" class="mb-5 p-1 ml-5">Chercher</x-primary-button>
                     </form>
                 </div>
+                @if (session('success'))
+                    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                        <span class="font-medium">{{session('success')}}</span>
+                    </div>
+                @endif
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-max">
+
                         <table class="min-w-full divide-y divide-gray-200 text-center">
                             <thead class="bg-gray-50">
                                 <tr>
