@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained();
+            $table->string('fullname_ar');
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->integer('duration')->nullable();
