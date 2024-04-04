@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\vacationRequest;
+use App\Http\Requests\VacationRequest;
 use App\Helpers\DateCalculationHelper;
 use App\Models\Employee;
 use App\Models\Holiday;
