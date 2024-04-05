@@ -43,6 +43,7 @@ public function store(VacationRequest $request): RedirectResponse
         return Carbon::parse($date)->format('d-m-Y');
     })->toArray();
     $employee = Employee::where('fullname_ar', $request->fullname_ar)->first();
+    $availableDays = $employee->current_year_days + $employee->previous_year_days;
 
     // Check if start date or end date falls on a weekend or holiday
     if (DateCalculationHelper::isWeekendOrHoliday($request->start_date, $holidays)) {
@@ -54,9 +55,15 @@ public function store(VacationRequest $request): RedirectResponse
 
     if ($request->duration == null) {
         $duration = DateCalculationHelper::calculateDays($request->start_date, $request->end_date, $holidays);
+        $enoughDays = $availableDays - $duration >= 0;
 
     } else {
         $end_date = DateCalculationHelper::calculateEndDate($request->start_date, $request->duration, $holidays);
+        $enoughDays = $availableDays - $request->duration >= 0;
+    }
+    
+    if(!$enoughDays){
+        return back()->withInput()->withErrors(['duration' => 'Cet employe n\'a pas de jours de conge suffisants']);
     }
 
     $employeeRequest = LeaveRequest::create([
@@ -67,9 +74,7 @@ public function store(VacationRequest $request): RedirectResponse
         'duration' => $request->duration ?? $duration,
     ]);
 
-    event(new Registered($employeeRequest));
-
-    return redirect(route('dashboard', absolute: false));
+    return redirect()->route('vacation.print', $employeeRequest->id);
 }
 
     /**
@@ -102,5 +107,13 @@ public function store(VacationRequest $request): RedirectResponse
     public function destroy(string $id)
     {
         //
+    }
+
+    public function printable(int $vacationRequestId){
+        $request = LeaveRequest::findOrFail($vacationRequestId);
+        $request->start_date = Carbon::parse($request->start_date);
+        $request->end_date = Carbon::parse($request->end_date); 
+
+        return view('requests.vacation-printable', ['request' => $request ]);
     }
 }

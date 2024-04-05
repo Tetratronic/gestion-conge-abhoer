@@ -22,11 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/settings', [SettingsController::class, 'edit'])->name('settings');
-
+    Route::get('/leaverequest/print/{employeeRequest}', [LeaveRequestController::class, 'printable'])->name('vacation.print');
 
     Route::resource('employees', EmployeeController::class);
     Route::resource('leave-requests', LeaveRequestController::class);
     Route::resource('departments', DepartmentController::class);
+
 
 });
 
