@@ -26,7 +26,7 @@
     <div class="flex justify-center text-lg">
         <h1 class="font-semibold">يقرر ما يلي:</h1>
     </div>
-    <p><span class="font-bold underline">الفصل الأول:</span> ابتداء من  <span class="font-semibold">{{$request->start_date->format('d/m/Y')}}</span> تمنح رخصة إدارية للسيد <span class="font-semibold">{{$request->fullname_ar}}</span>، لمدة أيام عمل تطابق حقه في العطلة لسنة <span class="font-semibold">{{$request->start_date->format('Y')}}</span></p>
+    <p><span class="font-bold underline">الفصل الأول:</span> ابتداء من  <span class="font-semibold">{{$request->start_date->format('d/m/Y')}}</span> تمنح رخصة إدارية للسيد <span class="font-semibold">{{$request->fullname_ar}}</span>، لمدة <span class="font-semibold">{{$request->duration}}</span> أيام عمل تطابق حقه في العطلة لسنة <span class="font-semibold">{{$request->start_date->format('Y')}}</span></p>
 
     <button onclick="window.print()" class="bg-blue-500 text-white px-4 py-2 rounded">Imprimer</button> 
 </body>
