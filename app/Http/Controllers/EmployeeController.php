@@ -19,7 +19,7 @@ class EmployeeController extends Controller
         $searchQuery = $request->input('search');
 
         $employees = Employee::where('firstname', 'like', "%$searchQuery%")
-            ->paginate(10); // Change the number 15 to your desired items per page
+            ->paginate(10);
 
         return view('employees.list', [
             'employees' => $employees

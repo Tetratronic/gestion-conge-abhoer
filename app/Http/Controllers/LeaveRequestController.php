@@ -58,13 +58,23 @@ public function store(VacationRequest $request): RedirectResponse
         $enoughDays = $availableDays - $duration >= 0;
 
     } else {
-        $end_date = DateCalculationHelper::calculateEndDate($request->start_date, $request->duration, $holidays);
-        $enoughDays = $availableDays - $request->duration >= 0;
+        $duration = $request->duration;
+        $end_date = DateCalculationHelper::calculateEndDate($request->start_date, $duration, $holidays);
+        $enoughDays = $availableDays - $duration >= 0;
     }
-    
+
     if(!$enoughDays){
         return back()->withInput()->withErrors(['duration' => 'Cet employe n\'a pas de jours de conge suffisants']);
     }
+
+    if($employee->previous_year_days < $duration){
+        $employee->current_year_days -= $duration - $employee->previous_year_days;
+        $employee->previous_year_days = 0;
+    } else {
+        $employee->previous_year_days -= $duration;
+    }
+    $employee->save();
+
 
     $employeeRequest = LeaveRequest::create([
         'employee_id' => $employee->id,
@@ -112,7 +122,7 @@ public function store(VacationRequest $request): RedirectResponse
     public function printable(int $vacationRequestId){
         $request = LeaveRequest::findOrFail($vacationRequestId);
         $request->start_date = Carbon::parse($request->start_date);
-        $request->end_date = Carbon::parse($request->end_date); 
+        $request->end_date = Carbon::parse($request->end_date);
 
         return view('requests.vacation-printable', ['request' => $request ]);
     }
