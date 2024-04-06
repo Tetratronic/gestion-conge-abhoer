@@ -18,9 +18,16 @@ class LeaveRequestController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): View
     {
-        //
+        $searchQuery = $request->input('search');
+
+        $vacationRequests = LeaveRequest::where('fullname_ar', 'like', "%$searchQuery%")
+            ->paginate(10);
+
+        return view('requests.list', [
+            'requests' => $vacationRequests
+        ]);
     }
 
     /**
