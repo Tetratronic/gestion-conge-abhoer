@@ -39,8 +39,8 @@
                                 @foreach($requests as $request)
                                 <tr>
                                     <td class="px-4 py-2 whitespace-nowrap">{{$request->fullname_ar}}</td>
-                                    <td class="px-4 py-2 whitespace-nowrap">{{$request->start_date}}</td>
-                                    <td class="px-4 py-2 whitespace-nowrap">{{$request->end_date}}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap">{{ Carbon\Carbon::parse($request->start_date)->format('d/m/Y') }}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap">{{ Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}</td>
                                     <td class="px-4 py-2 whitespace-nowrap">{{$request->duration}}</td>
                                     <td class="px-4 py-2 whitespace-nowrap flex flex-row gap-3 align-center justify-center">
                                         <form action="{{ route('vacation.print', ['employeeRequest' => $request->id] )}}" method="GET">

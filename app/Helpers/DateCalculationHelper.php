@@ -39,6 +39,13 @@ class DateCalculationHelper
                 $date->addDay();
             }
         }
-        return $date->format('Y-m-d');
+
+        $date->addDay();
+
+        while(self::isWeekendOrHoliday($date, $holidays)) {
+            $date->addDay();
+        }
+
+        return $date->format('Y-m-d ');
     }
 }

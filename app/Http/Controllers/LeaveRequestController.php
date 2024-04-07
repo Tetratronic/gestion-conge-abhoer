@@ -54,17 +54,20 @@ public function store(VacationRequest $request): RedirectResponse
 
     // Check if start date or end date falls on a weekend or holiday
     if (DateCalculationHelper::isWeekendOrHoliday($request->start_date, $holidays)) {
-        return back()->withInput()->withErrors(['start_date' => 'La date de début ne peut pas etre un Weekend']);
+        return back()->withInput()->withErrors(['start_date' => 'La date de début ne peut pas etre un Weekend ou un jour férié']);
     }
-    if ($request->has('end_date') && DateCalculationHelper::isWeekendOrHoliday($request->end_date, $holidays)) {
-        return back()->withInput()->withErrors(['end_date' => 'La date de fin ne peut pas etre un Weekend']);
-    }
+
+//    if ($request->end_date != null && DateCalculationHelper::isWeekendOrHoliday($request->end_date, $holidays)) {
+//        return back()->withInput()->withErrors(['end_date' => 'La date de fin ne peut pas etre un Weekend ou un jour férié']);
+//    }
 
     if ($request->duration == null) {
         $duration = DateCalculationHelper::calculateDays($request->start_date, $request->end_date, $holidays);
         $enoughDays = $availableDays - $duration >= 0;
+        $end_date = DateCalculationHelper::calculateEndDate($request->start_date, $duration, $holidays);
 
-    } else {
+    }
+    else {
         $duration = $request->duration;
         $end_date = DateCalculationHelper::calculateEndDate($request->start_date, $duration, $holidays);
         $enoughDays = $availableDays - $duration >= 0;
@@ -87,7 +90,7 @@ public function store(VacationRequest $request): RedirectResponse
         'employee_id' => $employee->id,
         'fullname_ar' => $request->fullname_ar,
         'start_date' => $request->start_date,
-        'end_date' => $request->end_date ??  $end_date,
+        'end_date' => $end_date,
         'duration' => $request->duration ?? $duration,
     ]);
 
