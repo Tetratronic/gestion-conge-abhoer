@@ -36,7 +36,9 @@ class LeaveRequestController extends Controller
     public function create(): View
     {
         //
-        return view('requests.create');
+        return view('requests.create', [
+            'interims' => Employee::all(),
+        ]);
     }
 
     /**
@@ -92,6 +94,7 @@ public function store(VacationRequest $request): RedirectResponse
         'start_date' => $request->start_date,
         'end_date' => $end_date,
         'duration' => $request->duration ?? $duration,
+        'interim' => $request->interim,
     ]);
 
     return redirect()->route('vacation.print', $employeeRequest->id);
@@ -133,7 +136,6 @@ public function store(VacationRequest $request): RedirectResponse
         $request = LeaveRequest::findOrFail($vacationRequestId);
         $request->start_date = Carbon::parse($request->start_date);
         $request->end_date = Carbon::parse($request->end_date);
-
         return view('requests.vacation-printable', ['request' => $request ]);
     }
 }

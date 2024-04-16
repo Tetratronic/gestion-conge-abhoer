@@ -21,6 +21,14 @@
                 <x-text-input id="duration" name="duration" type="number" class="mt-1 block w-full" :value="old('duration')" autocomplete="duration" />
                 <x-input-error class="mt-2" :messages="$errors->get('duration')" />
 
+                <x-input-label for="interim" :value="__('Intérim')" />
+                <select name="interim" id="interim" required class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    @foreach($interims as $interim)
+                        <option value="{{$interim->fullname_ar}}">{{$interim->fullname_ar}}</option>
+                    @endforeach
+                </select>
+                <x-input-error class="mt-2" :messages="$errors->get('interim')" />
+
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold rounded m-4 p-4">
                     Ajouter
                 </button>
